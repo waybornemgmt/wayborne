@@ -36,22 +36,3 @@ const observer = new IntersectionObserver(
 );
 
 revealTargets.forEach((el) => observer.observe(el));
-
-const creatorForm = document.getElementById("creatorForm");
-const brandForm = document.getElementById("brandForm");
-
-creatorForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  alert(
-    "Creator application received. The form is currently in demo mode — we'll connect it to your email next."
-  );
-});
-
-brandForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  alert(
-    "Brand inquiry received. The form is currently in demo mode — we'll connect it to your email next."
-  );
-});
