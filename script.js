@@ -13,10 +13,41 @@ if (menuToggle && mobileMenu) {
   });
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach((item) => {
+  const button = item.querySelector(".faq-question");
+
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    const isOpen = item.classList.contains("open");
+
+    faqItems.forEach((otherItem) => {
+      otherItem.classList.remove("open");
+
+      const otherButton = otherItem.querySelector(".faq-question");
+
+      if (otherButton) {
+        otherButton.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    if (!isOpen) {
+      item.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
+    }
+  });
+});
 
 const revealTargets = document.querySelectorAll(
-  ".intro-grid, .split-panel, .section-heading-row, .step-card, .statement-wrap, .about-grid, .form-panel, .contact-wrap"
+  ".intro-grid, .split-panel, .section-heading-row, .step-card, .creator-partnership-heading, .principle-card, .creator-flow, .faq-shell, .statement-wrap, .about-grid, .form-panel, .contact-wrap"
 );
 
 revealTargets.forEach((el) => el.classList.add("reveal"));
